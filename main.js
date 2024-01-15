@@ -209,3 +209,19 @@ const generatorObject = generatorFunction()
  for(const i of generatorObject) {
     console.log(i)
  }
+
+//.map() method .filter refer to code with mosh on yt
+const numbers = [1,-1,2,3]
+
+const items = numbers
+.filter(n=> n >= 0)
+.map((n) => {
+    return {value:n}
+})
+
+console.log(items)
+
+
+
+
+
