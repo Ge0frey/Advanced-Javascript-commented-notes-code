@@ -335,5 +335,87 @@ const fullName = users.map((user) => {
 
 console.log(fullName)
 
+//Asynchronous Javascript callbacks promises async/await
+// A callback function, in the context of programming, is a function that is passed as an argument to another function and is executed after the completion of a specific task or event. The primary purpose of a callback is to allow a program to continue executing while waiting for an asynchronous operation to finish.
 
+// Here's a basic example in JavaScript:
+function doSomethingAsync(callback) {
+    setTimeout(() => {
+        console.log("Async operation completed")
+        callback()
+    }, 1000)
+}
 
+function callBackFunction() {
+    console.log("callback function executed")
+}
+
+doSomethingAsync(callBackFunction)
+
+// James Q Quick YouTube
+//setTimeout
+setTimeout(() => {
+    console.log("Waited for one second")
+}, 1000)
+
+//nested setTimeouts (call back hell)
+setTimeout(() => {
+    console.log('3')
+    setTimeout(() => {
+        console.log("2")
+        setTimeout(() => {
+            console.log("1")
+        }, 1000)
+    }, 1000)
+}, 1000)
+
+//creating a promise
+const myPromise = new Promise ((resolve, reject) => {
+    const rand = Math.floor(Math.random()* 2) 
+    if (rand === 0) {
+        resolve()
+    } else {
+        reject()
+    }
+})
+
+myPromise
+.then(() => console.log("Success"))
+.catch(() => console.error("Something went wrong"))
+
+//fs readFile with promises
+const fs = require('fs');
+fs.promises.readFile('./test.txt', {encoding:'utf-8'})
+.then((data) => console.log(data))
+.catch((err) => console.error(err))
+
+//fetching apis with promises
+fetch("https://pokeapi.co/api/v2/pokemon/ditto")
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((err) => console.error(err))
+
+//Load file with async/await
+const loadFile = async () => {
+    try {
+        const data = await fs.promises.readFile('./test.txt', {
+            encoding: 'utf-8'
+        })
+        console.log(data)
+    } catch (err) {
+        console.error(err)
+    }
+}
+loadFile()
+
+//fetching APIs with async/await without error handling
+const fetchPokemon = async (id) => {
+    try {
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        const data = await res.json()
+        console.log(data)
+    } catch (err) {
+        console.error(err)
+    }
+}
+fetchPokemon(2)
