@@ -408,7 +408,7 @@ const loadFile = async () => {
 }
 loadFile()
 
-//fetching APIs with async/await without error handling
+//fetching APIs with async/await with error handling
 const fetchPokemon = async (id) => {
     try {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
