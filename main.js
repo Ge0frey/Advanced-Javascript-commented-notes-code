@@ -290,5 +290,50 @@ const sum = arr.reduce((acc, curr) => {
 
 console.log(sum)
 
+//applying map filter and reduce (possible real world examples)
+const users = [
+    {firstName: "Geoffrey", lastName: "Kimani", age: 22},
+    {firstName: "Elon", lastName: "Musk", age: 58},
+    {firstName: "Jeff", lastName: "Bezos", age: 46},
+    {firstName: "Benard", lastName: "Arnault", age: 22}
+]
+
+//First name of users with age less than 30 a .reduce solution
+const fNameLess30 = users.reduce((acc, curr) => {
+    if(curr.age < 30) {
+        acc.push (curr.firstName)
+    }
+    return acc
+}, [])
+
+console.log (fNameLess30)
+
+//First name of users with age less than 30 a .filter .map solution
+const firstNameLess30 = users.filter((user) => {
+    return user.age < 30
+}).map((user) => {
+    return user.firstName
+})
+
+console.log(firstNameLess30)
+
+const output = users.reduce ((acc, curr) => {
+    if (acc[curr.age]) {
+        acc[curr.age] = ++acc[curr.age]
+    }
+    else {
+        acc[curr.age] = 1
+    }
+    return acc
+}, {})
+
+console.log (output)
+
+const fullName = users.map((user) => {
+   return `${user.firstName} ${user.lastName}`
+})
+
+console.log(fullName)
+
 
 
