@@ -419,3 +419,27 @@ const fetchPokemon = async (id) => {
     }
 }
 fetchPokemon(2)
+
+//Promise in Javascript | Namaste JavaScript
+
+const cart = ["SHoes", "Pants", "Shirts"]
+
+createOrder(cart, function(orderId) {
+    proceedToPayment(orderId)
+})
+
+createOrder(cart).then ((orderId) => {
+  return  proceedToPayment(orderId)
+})
+
+//using promise to fetch for APIs
+// A promise is a container for a future value that is filled after asynchronous code returns that value.
+const GITHUB_API = "https://api.github.com/users/Ge0frey"
+
+const user = fetch(GITHUB_API)
+
+console.log(user)
+
+user.then((data) => {
+    console.log(data)
+})
