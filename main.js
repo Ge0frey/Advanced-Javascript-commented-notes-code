@@ -422,13 +422,13 @@ fetchPokemon(2)
 
 //Promise in Javascript | Namaste JavaScript
 
-const cart = ["SHoes", "Pants", "Shirts"]
+const cart2 = ["SHoes", "Pants", "Shirts"]
 
-createOrder(cart, function(orderId) {
+createOrder(cart2, function(orderId) {
     proceedToPayment(orderId)
 })
 
-createOrder(cart).then ((orderId) => {
+createOrder(cart2).then ((orderId) => {
   return  proceedToPayment(orderId)
 })
 
@@ -443,4 +443,53 @@ console.log(user)
 user.then((data) => {
     console.log(data)
 })
+
+//Creating a Promise, Chaining & Error Handling | Namaste Javascript
+const cart = ['shirt','shoes','pants','Kurta']
+
+createOrder(cart)
+.then ((orderId) => {
+    console.log(orderId)
+    return orderId
+})
+.then((orderId) => {
+    return proceedToPayment (orderId)
+})
+.then((PaymentInfo) => {
+    console.log(PaymentInfo)
+})
+.catch((err) => {
+    console.error(err.message)
+})
+
+function createOrder (cart) {
+    return new Promise ((resolve, reject) => {
+        //logic for creating a successful order
+        const orderId = "12345"
+        if (orderId) {
+            setTimeout(() => {
+                resolve(orderId)
+            }, 5000)
+        }
+        //an error in creating th order
+        if (!validateCart(cart)) {
+            const err = new Error ("cart is not valid")
+            reject(err)
+        }
+    })
+
+    
+}
+
+function proceedToPayment(orderId) {
+    return new Promise ((resolve, reject) => {
+        resolve("Payment successful")
+    })
+}
+
+function validateCart (cart) {
+    return true
+}
+
+
 
