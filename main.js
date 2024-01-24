@@ -491,5 +491,27 @@ function validateCart (cart) {
     return true
 }
 
+//Best Promise example
+const myPromise1 = new Promise((resolve, reject) => {
+  // Simulate an asynchronous operation
+  setTimeout(() => {
+    const randomNumber = Math.random();
+    console.log(randomNumber)
+    randomNumber > 0.5 ? resolve(randomNumber) : reject(new Error('Random number is too low'))
+  }, 1000); // Simulating a delay of 1000 milliseconds (1 second)
+});
+
+//Handling the promise
+myPromise1
+  .then((result) => {
+    console.log(`Promise fulfilled with result: ${result}`);
+  })
+  .catch((error) => {
+    console.error(`Promise rejected with error: ${error}`);
+  });
+
+
+
+
 
 
