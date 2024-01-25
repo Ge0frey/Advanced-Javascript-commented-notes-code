@@ -551,5 +551,20 @@ function getData () {
 
 getData()
 
+//Handling the same promise using async await
+//You have to use the keyword await infront of the promise that has to be handled
+async function handlePromise () {
+  console.log("Hello world")
+  //await is a keyword that can only be used inside an async function
+  const val = await p1 //At this point, the handlePromise function execution is suspended from the call stack until the promise is resolved.This means that the Javascript code does not stop and wait for the promise to be executed and resolved.
+    console.log("Namaste Javascript") //The handlePromise function comes back into the callstack and continues with execution of the code line by line.
+    console.log(val) //logs out the resolved promise after 10000ms
+  const val2 = await p2
+    console.log("Namaste Javascript 2")
+    console.log(val2)
+}
+
+handlePromise()
+//Javascript is a single threaded language
 
 
