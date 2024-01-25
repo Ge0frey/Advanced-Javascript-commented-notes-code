@@ -510,8 +510,21 @@ myPromise1
     console.error(`Promise rejected with error: ${error}`);
   });
 
+//async await | Namaste Javascript
 
+const p = new Promise ((resolve,reject) => {
+    let a = 1 + 1
+    a===2 ? resolve("a is exactly two") : reject("a is not two")
+})
 
+async function getData () {
+  //an async function will always return a promise irrgardless of the data structure its supposed to return.
+  //If we return a string inside an async function then the string will be passed as a promise still.
+  return p
+}
 
+const dataPromise = getData()
+
+dataPromise.then((data) => {console.log(data)}).catch((error) => {console.error(error)})
 
 
