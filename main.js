@@ -566,6 +566,23 @@ async function handlePromise () {
 //Javascript is a single threaded language
 handlePromise()
 
+//Real world examples of async/await -> fetching apis
+const API_URL = "https://api.github.com/users/Ge0frey"
 
+async function handlePromise1 () {
+  try {
+    const response = await fetch(API_URL)
+
+    const data = await response.json()
+
+    console.log(data)
+
+  } catch (err) {
+
+    console.error(err)
+
+  }
+}
+handlePromise1()
 
 
