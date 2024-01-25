@@ -527,4 +527,29 @@ const dataPromise = getData()
 
 dataPromise.then((data) => {console.log(data)}).catch((error) => {console.error(error)})
 
+//async and await combo is used to handle promises
+const p1 = new Promise ((resolve, reject) => { 
+  a = 1 + 1
+  setTimeout (() => {
+    a===2 ? resolve ("a is exactly two") : reject ("a is not two")
+  }, 5000)
+})
+
+const p2 = new Promise ((resolve, reject) => { 
+  a = 1 + 1
+  setTimeout (() => {
+    a===2 ? resolve ("a is exactly two") : reject ("a is not two")
+  }, 10000)
+})
+
+//Handle the above promise using a normal function and not an async function
+function getData () {
+  //The javascript engine will not wait for the promise to be resolved but instead it will execute the next line of code in this case "Namaste Javascript" then execute the promise after 10000ms
+ p1.then((result) => {console.log(result)}).catch((error) => {console.error(error)})
+ console.log("Namaste Javascript")
+}
+
+getData()
+
+
 
